@@ -79,10 +79,18 @@ class _ToDoWidgetState extends State<ToDoWidget> {
                     });
                   },
                 )),
-            ToDoListWidget(
-              toDoArr: toDoArr,
-              markToDoItemComplete: markToDoItemComplete,
+            Text(
+              toDoArr.isEmpty
+                  ? 'Create your first To Do Item!'
+                  : 'Total Items: ${toDoArr.length}',
+              style: TextStyle(
+                fontSize: 18,
+              ),
             ),
+            ToDoListWidget(
+                toDoArr: toDoArr,
+                markToDoItemComplete: markToDoItemComplete,
+                removeToDoItem: removeToDoItem),
           ],
         ),
       ),
