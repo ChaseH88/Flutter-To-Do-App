@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "demoapp" "\0"
+            VALUE "FileDescription", "todolistapp" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "demoapp" "\0"
+            VALUE "InternalName", "todolistapp" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "demoapp.exe" "\0"
-            VALUE "ProductName", "demoapp" "\0"
+            VALUE "OriginalFilename", "todolistapp.exe" "\0"
+            VALUE "ProductName", "todolistapp" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
