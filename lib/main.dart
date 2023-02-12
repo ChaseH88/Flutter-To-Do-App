@@ -33,6 +33,19 @@ class _ToDoWidgetState extends State<ToDoWidget> {
     });
   }
 
+  void removeToDoItem(String key) {
+    setState(() {
+      toDoArr.removeWhere((item) => item['key'] == key);
+    });
+  }
+
+  void markToDoItemComplete(String key) {
+    setState(() {
+      var item = toDoArr.firstWhere((item) => item['key'] == key);
+      item['isComplete'] = !item['isComplete'];
+    });
+  }
+
   void handleSubmit() {
     addToDoItem(taskInput);
   }
@@ -47,22 +60,43 @@ class _ToDoWidgetState extends State<ToDoWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'Add a To Do Item!',
+            Padding(
+              padding: const EdgeInsets.all(14),
+              child: Text(
+                'To Do List',
+                style: TextStyle(
+                  fontSize: 24,
+                ),
+              ),
             ),
-            TextField(
-              onChanged: (value) {
-                setState(() {
-                  taskInput = value;
-                });
-              },
-            ),
+            Padding(
+                padding: const EdgeInsets.all(14),
+                child: TextField(
+                  onChanged: (value) {
+                    setState(() {
+                      taskInput = value;
+                    });
+                  },
+                )),
             Expanded(
               child: ListView.builder(
                 itemCount: toDoArr.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(toDoArr[index]['task']),
+                    title: toDoArr[index]['isComplete']
+                        ? Text(
+                            toDoArr[index]['task'],
+                            style: TextStyle(
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          )
+                        : Text(toDoArr[index]['task']),
+                    trailing: Checkbox(
+                      value: toDoArr[index]['isComplete'],
+                      onChanged: (value) {
+                        markToDoItemComplete(toDoArr[index]['key']);
+                      },
+                    ),
                   );
                 },
               ),
